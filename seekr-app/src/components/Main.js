@@ -1,9 +1,14 @@
 import React,{Component} from 'react'
 
+import JobRows from './JobRows'
+
 class Main extends Component {
   render(){
     return(
-      <h1>Main Component</h1> 
+      <div>
+        <h1>Main Component</h1> 
+        <JobRows />
+      </div>
     )
   }
 }
