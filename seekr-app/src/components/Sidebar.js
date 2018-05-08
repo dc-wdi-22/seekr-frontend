@@ -1,9 +1,30 @@
 import React, {Component} from 'react'
 
 class Sidebar extends Component {
+  constructor (props) {
+    super(props) 
+    this.state = {
+      row: ''
+    }
+  }
+
+  componentWillReceiveProps(){
+    const rows = this.props.companies.map( (job,i) => {
+      return (
+        <div key={i}>
+          <li><a href={job.url}>{job.company}</a></li>
+        </div>
+      )
+    })
+    this.setState({row: rows})
+  }
   render () {
     return (
-      <h1>Sidebar Component</h1>
+      <div>
+        <ul>
+          {this.state.row}
+        </ul>
+      </div>
     )
   }
 }
