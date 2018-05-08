@@ -1,0 +1,32 @@
+Arguments: 
+  /Users/onyeukwup/.nvm/versions/node/v8.11.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js start
+
+PATH: 
+  /Users/onyeukwup/Desktop/wdi/lessons/week8/python_lessons/.env/bin:/Users/onyeukwup/miniconda3/envs/wdi/bin:~/miniconda3/bin:/Users/onyeukwup/.cargo/bin:/usr/local/bin:/Users/onyeukwup/.rbenv/bin:~/go/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/onyeukwup/.cargo/bin:/Users/onyeukwup/.nvm/versions/node/v8.11.1/bin:/Users/onyeukwup/.rbenv/bin:~/go/bin:/opt/local/bin:/opt/local/sbin:/Applications/kitty.app/Contents/MacOS:/Users/onyeukwup/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Users/onyeukwup/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.11.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find a package.json file in "/Users/onyeukwup/Desktop/wdi/projects/project3/seekr-frontend"
+      at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:40048:15
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:98:30)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:109:13
+      at <anonymous>
