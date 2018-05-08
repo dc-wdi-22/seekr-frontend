@@ -1,0 +1,13 @@
+.job-row {
+  clear: both;
+}
+
+.job {
+  float: left;
+  margin: 0;
+  padding: 10px;
+}
+
+.job-container{
+  list-style-type: none;
+}
