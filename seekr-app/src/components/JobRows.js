@@ -51,7 +51,7 @@ class JobRows extends Component {
   render(){
     const rows = this.state.fakeData.map( (job,i) => {
       return (
-      <div>
+      <div key={i}>
         <h3>{job.title}</h3>
         <h3>{job.company}</h3>
         <h3>{job.location}</h3>
