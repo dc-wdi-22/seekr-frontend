@@ -1,5 +1,34 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-{
-  
+.jobDetail {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+}
+.header {
+  width: 100%;
+  color: white;
+  background: #3b71a5;
+  padding: 4px 0px 4px 12px;
+}
+
+.header-text {
+  display: block;
+  width: 60%;
+}
+
+.bold {
+  text-transform: uppercase;
+}
+
+.button {
+  padding: 4px 4px;
+  background: #feb64e;
+  color: white;
+  width: 80px;
+  border: 0px;
+  border-radius: 6px;
+  float: right;
+  position: relative;
+  margin: -50px 40px 0 0;
+  font-size: 20px;
 }
