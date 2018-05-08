@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Notes from './components/Notes'
 import Sidebar from './components/Sidebar'
 import SingleJob from './components/SingleJob'
+import ModalConductor from './components/ModalConductor'
 import './App.css'
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
       <div className="App">
         <Main />
         <Sidebar />
+        <ModalConductor />
       </div>
     )
   }
