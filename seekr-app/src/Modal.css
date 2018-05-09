@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
 
 .jobDetail {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
+  font-weight: 300;
 }
 .header {
   width: 100%;
@@ -18,6 +18,7 @@
 
 .bold {
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .button {
