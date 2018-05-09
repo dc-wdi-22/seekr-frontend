@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import SingleJob from './SingleJob'
 
 class JobRows extends Component {
   constructor () {
@@ -18,24 +19,30 @@ class JobRows extends Component {
   }
 
   render () {
-    let renderedRows = this.state.rows.map((job, i) => {
-      return (
-        <li className='job' key={i}>
-          <p>{job.company.name}</p>
-          <p>{job.title}</p>
-          <p>{job.job_status}</p>
-        </li>
-      )
-    })
     return (
       <div>
-        <div className='job-row'>
-          <ul className='job-container'>
-            { renderedRows }
-          </ul>
-        </div>
+        <h1>{this.props.filter}</h1>
+        {this.props.jobs.map(job => <SingleJob job={job} />)}
       </div>
     )
+    // let renderedRows = this.state.rows.map((job, i) => {
+    //   return (
+    //     <li className='job' key={i}>
+    //       <p>{job.company.name}</p>
+    //       <p>{job.title}</p>
+    //       <p>{job.job_status}</p>
+    //     </li>
+    //   )
+    // })
+    // return (
+    //   <div>
+    //     <div className='job-row'>
+    //       <ul className='job-container'>
+    //         { renderedRows }
+    //       </ul>
+    //     </div>
+    //   </div>
+    // )
   }
 }
 

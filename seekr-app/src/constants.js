@@ -1,1 +1,1 @@
-export const CLIENT_URL = 'http://localhost:8000/companies?format=json'
+export const CLIENT_URL = 'https://demo-seekr.herokuapp.com/'
