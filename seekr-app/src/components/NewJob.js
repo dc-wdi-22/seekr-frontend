@@ -39,29 +39,30 @@ class NewJob extends Component {
 
   onSubmit (event) {
     event.preventDefault()
-
     console.log('testing')
 
     let formData = this.state
-    let JOB_URL = CLIENT_URL + '/jobs/'
+    let JOB_URL = CLIENT_URL + 'jobs'
 
     axios.post(JOB_URL, formData)
       .then(res => {
         console.log(res)
         console.log(res.data)
       })
+      .catch(data => {
+        console.log(data)
+      })
   }
 
   render () {
     return (
       <Modal
-        isOpen={this.props.newJobModal}
-        onRequestClose={this.props.closeNewJob}
+        isOpen={this.props.isOpen}
+        onRequestClose={this.props.onRequestClose}
         style={customStyles}
-        onClick={this.openNewJob}
         contentLabel='Example Modal'
       >
-        <div className='jobDetail'>
+        <div className='formcontainer'>
 
           <form onSubmit={this.onSubmit}>
         Company Name:
@@ -80,10 +81,11 @@ class NewJob extends Component {
             <input onChange={this.onChange} value={this.state.jobrequirements} type='text' name='jobrequirements' />
         Notes:
             <input onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
-        TO Do List:
+        To Do List:
             <input onChange={this.onChange} value={this.state.todolist} type='text' name='todolist' />
+            <input type='submit' value='submit' />
           </form>
-          <input type='submit' value='submit' />
+
         </div>
       </Modal>
     )
