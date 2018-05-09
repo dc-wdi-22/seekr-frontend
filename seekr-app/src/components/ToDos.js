@@ -20,7 +20,7 @@ class ToDo extends Component {
 
   componentDidUpdate () {
     axios
-      .put(`http://localhost:8000/todos/${this.props.item.pk}`, {
+      .put(`http://demo-seekr.herokuapp.com/todos/${this.props.item.pk}`, {
         status: this.state.status,
         name: this.state.name
       })
