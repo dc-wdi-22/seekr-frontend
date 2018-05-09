@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './Navbar.css'
+import seekrLogo from '../Images/seekrLogo.svg'
 
 class Navbar extends Component {
 
@@ -9,7 +10,7 @@ class Navbar extends Component {
   render(){
     return(
       <div class="navbar">
-        <h2 class="navbar-header">Seekr</h2>
+        <img className='logo' src={seekrLogo} alt='seekr'/>
         <button class="add-button" onClick={this.addJob}>+ Add Job</button>
         <span class="user">User: WDI22</span>
       </div>

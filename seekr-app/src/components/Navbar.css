@@ -1,6 +1,8 @@
 .navbar {
   background-color: #3b71a5;
   height: 80px;
+  padding-top: 20px;
+  border-bottom: 1px solid #3b71a5;
 }
 
 .navbar-header {
@@ -10,7 +12,6 @@
   font-weight: 300;
   color: white;
   display: inline;
-  float: left;
 }
 
 .user {
@@ -31,9 +32,17 @@
   font-weight: 300;
   font-size: 20px;
   border: none;
+  border-radius: 10px;
+  padding: 2px 12px;
 }
 
 .add-button:hover {
   cursor: pointer;
   box-shadow: 3px 3px #434B54; 
+}
+
+.logo {
+  height: 100%;
+  float: left;
+  margin-left: 60px;
 }
