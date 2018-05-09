@@ -54,7 +54,10 @@ class Main extends Component {
       jobs: [],
       companies: [],
       jobsApplied: [],
-      jobsFirstContact: []
+      jobsFirstContact: [],
+      jobsInterview: [],
+      jobsOffer: [],
+      jobsRejected: []
     }
   }
 
@@ -63,10 +66,16 @@ class Main extends Component {
       .then((response) => {
         let jobsApplied = response.data.filter(job => job.job_status === 'Applied')
         let jobsFirstContact = response.data.filter(job => job.job_status === 'First Contact')
+        let jobsInterview = response.data.filter(job => job.job_status === 'Interview')
+        let jobsOffer = response.data.filter(job => job.job_status === 'Offer')
+        let jobsRejected = response.data.filter(job => job.job_status === 'Rejected')
         this.setState({
           jobs: response.data,
           jobsApplied: jobsApplied,
-          jobsFirstContact: jobsFirstContact
+          jobsFirstContact: jobsFirstContact,
+          jobsInterview: jobsInterview,
+          jobsOffer: jobsOffer,
+          jobsRejected: jobsRejected
         })
         console.log(this.state)
       })
@@ -82,9 +91,11 @@ class Main extends Component {
       <div>
         <Navbar />
         <Sidebar companies={this.state.companies} />
-
         <JobRows filter='Applied' jobs={this.state.jobsApplied} />
         <JobRows filter='First Contact' jobs={this.state.jobsFirstContact} />
+        <JobRows filter='Interview' jobs={this.state.jobsFirstContact} />
+        <JobRows filter='Offer' jobs={this.state.jobsOffer} />
+        <JobRows filter='Rejected' jobs={this.state.jobsRejected} />
       </div>
     )
   }

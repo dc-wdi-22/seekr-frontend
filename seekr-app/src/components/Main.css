@@ -13,3 +13,21 @@
   list-style-type: none
   
 }
+
+.jobFilter {
+  text-align: left;
+  color: #3b71a5;
+  text-transform: uppercase;
+  font-size: 20px;
+  border-bottom: 1px solid #3b71a5
+
+}
+
+.single {
+  width: 200px;
+  height: 100px;
+  background: #cccccc;
+  padding: 4px 8px;
+  display: inline-block;
+  margin-left: 10px;
+}
