@@ -10,9 +10,9 @@ import ModalConductor from './components/ModalConductor'
 import './App.css'
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App">
+      <div className='App'>
         <Main />
         <Sidebar />
         <ModalConductor />
