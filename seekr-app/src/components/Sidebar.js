@@ -2,27 +2,14 @@ import React, {Component} from 'react'
 
 class Sidebar extends Component {
   constructor (props) {
-    super(props) 
-    this.state = {
-      row: ''
-    }
-  }
-
-  componentWillReceiveProps(){
-    const rows = this.props.companies.map( (job,i) => {
-      return (
-        <div key={i}>
-          <li><a href={job.url}>{job.company}</a></li>
-        </div>
-      )
-    })
-    this.setState({row: rows})
+    super(props)
   }
   render () {
     return (
       <div>
         <ul>
-          {this.state.row}
+          <li>Test</li>
+          {this.props.companies.map(company => <li><a href={company.url}>{company.name}</a></li>)}
         </ul>
       </div>
     )
