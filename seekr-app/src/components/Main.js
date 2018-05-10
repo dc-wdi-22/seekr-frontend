@@ -12,8 +12,6 @@ class Main extends Component {
   constructor () {
     super()
     this.state = {
-      jobs: [],
-      companies: [],
       jobsApplied: [],
       jobsFirstContact: [],
       jobsInterview: [],
@@ -22,43 +20,43 @@ class Main extends Component {
     }
   }
 
-  componentDidMount () {
-    Axios.get(`${CLIENT_URL}jobs`)
-      .then((response) => {
-        let jobsApplied = response.data.filter(job => job.job_status === 'Applied')
-        let jobsFirstContact = response.data.filter(job => job.job_status === 'First Contact')
-        let jobsInterview = response.data.filter(job => job.job_status === 'Interview')
-        let jobsOffer = response.data.filter(job => job.job_status === 'Offer')
-        let jobsRejected = response.data.filter(job => job.job_status === 'Rejected')
-        this.setState({
-          jobs: response.data,
-          jobsApplied: jobsApplied,
-          jobsFirstContact: jobsFirstContact,
-          jobsInterview: jobsInterview,
-          jobsOffer: jobsOffer,
-          jobsRejected: jobsRejected
-        })
-      })
-    Axios.get(`${CLIENT_URL}companies`)
-      .then((response) => {
-        this.setState({companies: response.data})
-      })
-  }
+  // componentWillReceiveProps () {
+  // this.props
+  // console.log('main will receive props:', this.props)
+  // let jobsApplied = this.props.jobs.filter(job => job.job_status === 'Applied')
+  // let jobsFirstContact = this.props.jobs.filter(job => job.job_status === 'First Contact')
+  // let jobsInterview = this.props.jobs.filter(job => job.job_status === 'Interview')
+  // let jobsOffer = this.props.jobs.filter(job => job.job_status === 'Offer')
+  // let jobsRejected = this.props.jobs.filter(job => job.job_status === 'Rejected')
+  // this.setState({
+  //   jobsApplied: jobsApplied,
+  //   jobsFirstContact: jobsFirstContact,
+  //   jobsInterview: jobsInterview,
+  //   jobsOffer: jobsOffer,
+  //   jobsRejected: jobsRejected
+  // })
+  // }
 
   render () {
+    console.log('main js rendering', this.props)
+    let jobsApplied = this.props.jobs.filter(job => job.job_status === 'Applied')
+    let jobsFirstContact = this.props.jobs.filter(job => job.job_status === 'First Contact')
+    let jobsInterview = this.props.jobs.filter(job => job.job_status === 'Interview')
+    let jobsOffer = this.props.jobs.filter(job => job.job_status === 'Offer')
+    let jobsRejected = this.props.jobs.filter(job => job.job_status === 'Rejected')
     return (
       <div className='body'>
         <Navbar openNewJob={this.props.openNewJob} />
         <div className='grid-container'>
           <div>
-            <JobRows openJobDetails={this.props.openJobDetails} name='Applied' jobs={this.state.jobsApplied} companies={this.state.companies} />
-            <JobRows openJobDetails={this.props.openJobDetails} name='First Contact' jobs={this.state.jobsFirstContact} companies={this.state.companies} />
-            <JobRows openJobDetails={this.props.openJobDetails} name='Interview' jobs={this.state.jobsFirstContact} companies={this.state.companies} />
-            <JobRows openJobDetails={this.props.openJobDetails} name='Offer' jobs={this.state.jobsOffer} companies={this.state.companies} />
-            <JobRows openJobDetails={this.props.openJobDetails} name='Rejected' jobs={this.state.jobsRejected} companies={this.state.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='Applied' jobs={jobsApplied} companies={this.props.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='First Contact' jobs={jobsFirstContact} companies={this.props.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='Interview' jobs={jobsInterview} companies={this.props.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='Offer' jobs={jobsOffer} companies={this.props.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='Rejected' jobs={jobsRejected} companies={this.props.companies} />
           </div>
           <div>
-            <Sidebar companies={this.state.companies} />
+            <Sidebar companies={this.props.companies} />
           </div>
         </div>
       </div>

@@ -67,7 +67,7 @@ class NewJob extends Component {
     //     [name]: value
     //   })
 
-    // } else { 
+    // } else {
     //   this.setState({
     //     [name]: value
     //   })
@@ -76,12 +76,10 @@ class NewJob extends Component {
     this.setState({
       [name]: value
     })
-    
-
   }
 
-  componentDidMount(){
-    if (this.props.job){
+  componentDidMount () {
+    if (this.props.job) {
       this.setState({
         ...this.props.job
       })
@@ -109,12 +107,12 @@ class NewJob extends Component {
         company: formData.company
       })
         .then(res => {
-          console.log(res.data)
+          this.props.updatePage()
         })
         .catch(data => {
           console.log(data)
         })
-    } else { 
+    } else {
       axios.put(`${CLIENT_URL}job/${this.props.job.pk}`, {
         title: formData.title,
         description: formData.description,
@@ -128,7 +126,7 @@ class NewJob extends Component {
         company: formData.company
       })
         .then(res => {
-          console.log(res.data)
+          this.props.updatePage()
         })
         .catch(data => {
           console.log(data)
@@ -170,7 +168,6 @@ class NewJob extends Component {
 
             <label>Requirements:</label>
             <input onChange={this.onChange} value={this.state.requirements} type='text' name='requirements' />
-<<<<<<< HEAD
         Job Status:
             <select value={this.state.job_status} onChange={this.onChange} name='job_status'>
               <option value='Applied'>Applied</option>
@@ -181,13 +178,6 @@ class NewJob extends Component {
             </select>
             {/* <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' /> */}
         Notes:
-=======
-
-            <label>Job Status:</label>
-            <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' />
-
-            <label>Notes:</label>
->>>>>>> master
             <input onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
 
             <input type='submit' value='submit' />
