@@ -22,7 +22,7 @@ class JobDetails extends Component {
         onRequestClose={this.props.onRequestClose}
         // style={customStyles}
         contentLabel='Example Modal'>
-        <div className='jobDetail'>
+        <div>
           <header className='header'>
             <h1 className='header-text'>{this.props.example[0].company.name}</h1>
             <h2 className='header-text'>Job title: {this.props.example[0].title}</h2>
