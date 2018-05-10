@@ -35,7 +35,7 @@ class JobDetails extends Component {
           <header className='header'>
             <h1 className='header-text'>{this.props.job.company.name}</h1>
             <h2 className='header-text'>Job Title: {this.props.job.title}</h2>
-            <button className='button'>Edit</button>
+            <button onClick={this.props.openNewJob} className='button'>Edit</button>
           </header>
           <div className='modalgrid-container'>
             <div>

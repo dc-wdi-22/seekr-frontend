@@ -62,8 +62,6 @@
   border-left: 1px solid #3b71a5;
   height: 100vh;
   margin-left: 12px;
-  
-  
 } 
 
 .joblist{
@@ -74,10 +72,6 @@
 
 a {
   text-decoration: none;
-}
-
-a:visited {
-  
   color: #3b71a5;
 }
 
