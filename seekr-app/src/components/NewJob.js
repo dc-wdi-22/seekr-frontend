@@ -31,7 +31,17 @@ class NewJob extends Component {
     super()
 
     this.state = {
-
+      putRequest: false,
+      company: '',
+      title: '',
+      description: '',
+      requirements: '',
+      salary_range_start: 40000,
+      salary_range_end: 60000,
+      source: '',
+      notes: '',
+      date_posted: '2018-01-01',
+      job_status: ''
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -42,47 +52,89 @@ class NewJob extends Component {
     const value = target.value
     const name = target.name
 
+    console.log('changing', name)
+
+    // if (name == "date_posted") {
+    //   if (value.indexOf('/') > 0 ) {
+    //     let date = value.split('/')
+    //     let dateValue = `${date[2]}-${date[1]}-${date[0]}`
+
+    //     console.log('date-Value:', dateValue)
+    //     this.setState({date_posted_formatted : dateValue})
+    //   }
+
+    //   this.setState({
+    //     [name]: value
+    //   })
+
+    // } else { 
+    //   this.setState({
+    //     [name]: value
+    //   })
+    // }
+
     this.setState({
       [name]: value
     })
+    
+
+  }
+
+  componentDidMount(){
+    if (this.props.job){
+      this.setState({
+        ...this.props.job
+      })
+
+      this.setState({putRequest: true})
+    }
   }
 
   onSubmit (event) {
     event.preventDefault()
-    console.log('testing')
 
     let formData = this.state
-    console.log(formData)
-    axios.post(`${CLIENT_URL}jobs`, {
-      title: formData.title,
-      description: formData.description,
-      requirements: formData.requirements,
-      salary_range_start: parseInt(formData.salary_range_start),
-      salary_range_end: parseInt(formData.salary_range_end),
-      source: formData.source,
-      notes: formData.notes,
-      date_posted: formData.data_posted,
-      job_status: formData.job_status,
-      company: formData.company
 
-      // "company": 1,
-      // "title": "Front",
-      // "description": "n",
-      // "requirements": "n",
-      // "salary_range_start": 50,
-      // "salary_range_end": 60,
-      // "source": "friend",
-      // "notes": "notes",
-      // "date_posted": "2000-12-01",
-      // "job_status": "Applied"
-
-    })
-      .then(res => {
-        console.log(res.data)
+    if (!this.state.putRequest) {
+      axios.post(`${CLIENT_URL}jobs`, {
+        title: formData.title,
+        description: formData.description,
+        requirements: formData.requirements,
+        salary_range_start: parseInt(formData.salary_range_start),
+        salary_range_end: parseInt(formData.salary_range_end),
+        source: formData.source,
+        notes: formData.notes,
+        date_posted: formData.date_posted,
+        job_status: formData.job_status,
+        company: formData.company
       })
-      .catch(data => {
-        console.log(data)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(data => {
+          console.log(data)
+        })
+    } else { 
+      axios.put(`${CLIENT_URL}job/${this.props.job.pk}`, {
+        title: formData.title,
+        description: formData.description,
+        requirements: formData.requirements,
+        salary_range_start: parseInt(formData.salary_range_start),
+        salary_range_end: parseInt(formData.salary_range_end),
+        source: formData.source,
+        notes: formData.notes,
+        date_posted: formData.date_posted,
+        job_status: formData.job_status,
+        company: formData.company
       })
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(data => {
+          console.log(data)
+        })
+    }
+    this.props.onRequestClose()
   }
 
   render () {
@@ -118,11 +170,24 @@ class NewJob extends Component {
 
             <label>Requirements:</label>
             <input onChange={this.onChange} value={this.state.requirements} type='text' name='requirements' />
+<<<<<<< HEAD
+        Job Status:
+            <select value={this.state.job_status} onChange={this.onChange} name='job_status'>
+              <option value='Applied'>Applied</option>
+              <option value='First Contact'>First Contact</option>
+              <option value='Interview'>Interview</option>
+              <option value='Offer'>Offer</option>
+              <option value='Rejected'>Rejected</option>
+            </select>
+            {/* <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' /> */}
+        Notes:
+=======
 
             <label>Job Status:</label>
             <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' />
 
             <label>Notes:</label>
+>>>>>>> master
             <input onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
 
             <input type='submit' value='submit' />

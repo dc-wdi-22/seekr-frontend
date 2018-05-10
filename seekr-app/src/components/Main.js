@@ -51,11 +51,11 @@ class Main extends Component {
         <Navbar openNewJob={this.props.openNewJob} />
         <div className='grid-container'>
           <div>
-            <JobRows openJobDetails={this.props.openJobDetails} filter='Applied' jobs={this.state.jobsApplied} companies={this.state.companies} />
-            <JobRows openJobDetails={this.props.openJobDetails} filter='First Contact' jobs={this.state.jobsFirstContact} companies={this.state.companies} />
-            <JobRows openJobDetails={this.props.openJobDetails} filter='Interview' jobs={this.state.jobsFirstContact} companies={this.state.companies} />
-            <JobRows openJobDetails={this.props.openJobDetails} filter='Offer' jobs={this.state.jobsOffer} companies={this.state.companies} />
-            <JobRows openJobDetails={this.props.openJobDetails} filter='Rejected' jobs={this.state.jobsRejected} companies={this.state.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='Applied' jobs={this.state.jobsApplied} companies={this.state.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='First Contact' jobs={this.state.jobsFirstContact} companies={this.state.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='Interview' jobs={this.state.jobsFirstContact} companies={this.state.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='Offer' jobs={this.state.jobsOffer} companies={this.state.companies} />
+            <JobRows openJobDetails={this.props.openJobDetails} name='Rejected' jobs={this.state.jobsRejected} companies={this.state.companies} />
           </div>
           <div>
             <Sidebar companies={this.state.companies} />
