@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Modal from 'react-modal'
 import '../Modal.css'
-import ToDo from './ToDos'
+import ToDo from './ToDo'
 
 const customStyles = {
   content: {
@@ -16,6 +16,13 @@ const customStyles = {
 
 class JobDetails extends Component {
   render () {
+    console.log('todo pks:', this.props.job.todos)
+    let todos = []
+    this.props.job.todos.forEach(pk => {
+      console.log('for each console log:', pk)
+      let todoMatch = this.props.todos.filter(todo => todo.pk == pk)
+      todos.push(...todoMatch)
+    })
     return (
       <Modal
         isOpen={this.props.isOpen}
@@ -40,7 +47,7 @@ class JobDetails extends Component {
             </div>
             <div className='todo'>
               <h2>To Do List</h2>
-              <h3>{this.props.job.todo_list.map(item => <ToDo item={item} />)}</h3>
+              <h3>{todos.map(todo => <ToDo item={todo} />)}</h3>
             </div>
           </div>
         </div>
