@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {CLIENT_URL} from '../constants.js'
 
 class ToDo extends Component {
   constructor (props) {
     super(props)
     this.state = {
       status: this.props.item.status,
-      name: this.props.item.name
+      name: this.props.item.name,
+      job: this.props.item.job
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -19,10 +21,12 @@ class ToDo extends Component {
   }
 
   componentDidUpdate () {
+    console.log('url', `${CLIENT_URL}todos/${this.props.item.pk}`)
     axios
-      .put(`http://demo-seekr.herokuapp.com/todos/${this.props.item.pk}`, {
+      .put(`${CLIENT_URL}todos/${this.props.item.pk}`, {
         status: this.state.status,
-        name: this.state.name
+        name: this.state.name,
+        job: this.state.job
       })
       .catch(err => console.log(err))
   }

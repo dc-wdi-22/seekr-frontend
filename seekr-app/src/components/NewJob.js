@@ -18,12 +18,12 @@ const customStyles = {
 }
 
 let blankCompany = {
-  "pk": '6',
-  "name": 'UNASSIGNED',
-  "industry": 'none',
-  "address": 'none',
-  "url": 'none',
-  "glassdoor_link": 'none',
+  'pk': '6',
+  'name': 'UNASSIGNED',
+  'industry': 'none',
+  'address': 'none',
+  'url': 'none',
+  'glassdoor_link': 'none'
 }
 
 class NewJob extends Component {
@@ -144,25 +144,33 @@ class NewJob extends Component {
         onRequestClose={this.props.onRequestClose}
         style={customStyles}
         contentLabel='Example Modal'
+        className='newjobmodal'
       >
         <div className='formcontainer'>
 
           <form onSubmit={this.onSubmit}>
-        Company Name:
+            <label>Company Name:</label>
             <input onChange={this.onChange} value={this.state.company} type='text' name='company' />
-        Job Title:
+
+            <label>Job Title:</label>
             <input onChange={this.onChange} value={this.state.title} type='text' name='title' />
-        Date Posted:
+
+            <label>Date Posted:</label>
             <input onChange={this.onChange} value={this.state.date_posted} type='text' name='date_posted' />
-        Job Description:
+
+            <label>Job Description:</label>
             <input onChange={this.onChange} value={this.state.description} type='text' name='description' />
-        Salary Range:
+
+            <label>Salary Range:</label>
             <input onChange={this.onChange} value={this.state.salary_range_start} type='text' name='salary_range_start' />
             <input onChange={this.onChange} value={this.state.salary_range_end} type='text' name='salary_range_end' />
-        Source:
+
+            <label>Source:</label>
             <input onChange={this.onChange} value={this.state.source} type='text' name='source' />
-        Requirements:
+
+            <label>Requirements:</label>
             <input onChange={this.onChange} value={this.state.requirements} type='text' name='requirements' />
+<<<<<<< HEAD
         Job Status:
             <select value={this.state.job_status} onChange={this.onChange} name='job_status'>
               <option value='Applied'>Applied</option>
@@ -173,7 +181,15 @@ class NewJob extends Component {
             </select>
             {/* <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' /> */}
         Notes:
+=======
+
+            <label>Job Status:</label>
+            <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' />
+
+            <label>Notes:</label>
+>>>>>>> master
             <input onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
+
             <input type='submit' value='submit' />
           </form>
 

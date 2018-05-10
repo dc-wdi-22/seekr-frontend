@@ -4,10 +4,10 @@
   width: 100%;
   color: white;
   background: #3b71a5;
-  padding: 8px 0px 6px 12px;
   margin-bottom: 2em;
   color: #f4b861;
-  
+  margin: -20px;
+  padding: 20px;
 }
 
 .header-text {
@@ -20,17 +20,15 @@
 .bold {
   text-transform: uppercase;
   font-weight:bold;
-  
-
-  
 }
 
 .jobDetails {
   text-decoration: none;
   font-size: 16px;
-  margin-top: 2em;
+  margin-top: 3em;
   margin-bottom: 2em;
   font-family: Arial, Helvetica, sans-serif;
+  color: #3b71a5;
 }
 
 .button {
@@ -42,25 +40,41 @@
   border-radius: 6px;
   float: right;
   position: relative;
-  margin: -50px 40px 0 0;
+  margin: -50px 10px 0 0;
   font-size: 20px;
 }
 
 .modalgrid-container {
-    display: inline-grid;
-    grid-template-columns: 70% 30%;  
-   
+  display: grid;
+  grid-template-columns: 70% 30%;
 }
 
 .todo {
   border-left: 1px solid #3b71a5;
-  height: 100vh;
+  height: 100%;
+  margin-top: 30px;
   margin-left: 10em;
   padding-left: 40px;
   font-size: 15px;
+  color: #3b71a5;
 }
 
 .checkboxlabel{
   padding: 10px;
   font-size: 15px;
+}
+
+.newjobmodal{
+  position: fixed;
+  width: 50%;
+  height: 80%;
+  background-color: white;
+  display: block;
+  padding: 30px;
+}
+
+input {
+  padding: 3px 5px;
+  margin: 1em;
+  display: block;
 }
