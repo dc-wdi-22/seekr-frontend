@@ -17,11 +17,21 @@ const customStyles = {
   }
 }
 
+let blankCompany = {
+  "pk": '6',
+  "name": 'UNASSIGNED',
+  "industry": 'none',
+  "address": 'none',
+  "url": 'none',
+  "glassdoor_link": 'none',
+}
+
 class NewJob extends Component {
   constructor () {
     super()
 
     this.state = {
+      
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -44,7 +54,26 @@ class NewJob extends Component {
     let formData = this.state
     let JOB_URL = CLIENT_URL + 'jobs'
 
-    axios.post(JOB_URL, formData)
+    axios.post(JOB_URL, {
+      title: "Frontend",
+      description: "do things",
+      requirements: "be great",
+      salary_range_start: 10,
+      salary_range_end: 20,
+      source: "google",
+      notes: "none",
+      date_posted: "2018-02-12",
+      job_status: 'Applied',
+      company: 6
+      // company: {
+      //      "pk": '6',
+      //      "name": 'UNASSIGNED',
+      //      "industry": 'none',
+      //      "address": 'none',
+      //      "url": 'none',
+      //      "glassdoor_link": 'none',
+      //    }
+    })
       .then(res => {
         console.log(res)
         console.log(res.data)
