@@ -20,29 +20,13 @@ class JobRows extends Component {
 
   render () {
     return (
-      <div>
-        <h1>{this.props.filter}</h1>
-        {this.props.jobs.map(job => <SingleJob job={job} />)}
+      <div >
+        <h1 className='jobStatus'>{this.props.filter}</h1>
+        <div className='jobsgrid-container'>
+          {this.props.jobs.map(job => <SingleJob job={job} />)}
+        </div>
       </div>
     )
-    // let renderedRows = this.state.rows.map((job, i) => {
-    //   return (
-    //     <li className='job' key={i}>
-    //       <p>{job.company.name}</p>
-    //       <p>{job.title}</p>
-    //       <p>{job.job_status}</p>
-    //     </li>
-    //   )
-    // })
-    // return (
-    //   <div>
-    //     <div className='job-row'>
-    //       <ul className='job-container'>
-    //         { renderedRows }
-    //       </ul>
-    //     </div>
-    //   </div>
-    // )
   }
 }
 

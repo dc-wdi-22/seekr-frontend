@@ -6,10 +6,10 @@ class Sidebar extends Component {
   }
   render () {
     return (
-      <div>
+      <div className='sidebar'>
         <ul>
-          <li>Test</li>
-          {this.props.companies.map(company => <li><a href={company.url}>{company.name}</a></li>)}
+          <h4>Companies Applied To</h4>
+          {this.props.companies.map(company => <li className='joblist'><a href={company.url}>{company.name}</a></li>)}
         </ul>
       </div>
     )
