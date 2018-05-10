@@ -67,18 +67,38 @@
 .newjobmodal{
   position: fixed;
   width: 60%;
-  height: 80%;
+  height: 85%;
   background-color: white;
   display: block;
-  padding: 30px;
+  padding: 20px;
   position: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 input {
   padding: 1em;
   margin: 1em;
-  width: 60%;
+  width: 94%;
   display: block;
   font-size: 13px;
+}
 
+.statuslabel {
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.newjobbutton {
+  padding: 4px 4px;
+  background: #3b71a5;
+  color: white;
+  width: 80px;
+  border: 0px;
+  border-radius: 6px;
+  margin-left: 18.5em;
+  font-size: 20px;
+}
+
+.newjobbutton:hover {
+  background: #feb64e;
 }

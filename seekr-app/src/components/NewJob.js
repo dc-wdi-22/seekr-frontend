@@ -147,38 +147,31 @@ class NewJob extends Component {
         <div className='formcontainer'>
 
           <form className='newjobform' onSubmit={this.onSubmit}>
-            {/* <label>Company Name:</label> */}
             <input placeholder='Company Name' onChange={this.onChange} value={this.state.company} type='text' name='company' />
 
-            {/* <label>Job Title:</label> */}
             <input placeholder='Job Title' onChange={this.onChange} value={this.state.title} type='text' name='title' />
 
-            {/* <label>Date Posted:</label> */}
             <input placeholder='Date Posted' onChange={this.onChange} value={this.state.date_posted} type='text' name='date_posted' />
 
-            {/* <label>Job Description:</label> */}
             <input placeholder='Job Description' onChange={this.onChange} value={this.state.description} type='text' name='description' />
 
-            {/* <label>Salary Range:</label> */}
             <input placeholder='Min-salary' onChange={this.onChange} value={this.state.salary_range_start} type='text' name='salary_range_start' />
             <input placeholder='Max-salary' onChange={this.onChange} value={this.state.salary_range_end} type='text' name='salary_range_end' />
 
-            {/* <label>Source:</label> */}
             <input placeholder='Source' onChange={this.onChange} value={this.state.source} type='text' name='source' />
 
-            <label>Requirements:</label>
-            <input onChange={this.onChange} value={this.state.requirements} type='text' name='requirements' />
-        Job Status:
-            <select value={this.state.job_status} onChange={this.onChange} name='job_status'>
-              <option value='Applied'>Applied</option>
-              <option value='First Contact'>First Contact</option>
-              <option value='Interview'>Interview</option>
-              <option value='Offer'>Offer</option>
-              <option value='Rejected'>Rejected</option>
-            </select>
-            {/* <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' /> */}
-        Notes:
-            <input onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
+            <input placeholder='Requirements' onChange={this.onChange} value={this.state.requirements} type='text' name='requirements' />
+            <input placeholder='Notes' onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
+            <div>
+              <label className='statuslabel'>Job Status:</label>
+              <select value={this.state.job_status} onChange={this.onChange} name='job_status'>
+                <option value='Applied'>Applied</option>
+                <option value='First Contact'>First Contact</option>
+                <option value='Interview'>Interview</option>
+                <option value='Offer'>Offer</option>
+                <option value='Rejected'>Rejected</option>
+              </select>
+            </div>
 
             <input className='newjobbutton' type='submit' value='submit' />
           </form>
