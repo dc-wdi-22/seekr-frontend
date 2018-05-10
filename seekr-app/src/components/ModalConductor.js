@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import JobDetails from './JobDetails'
 import NewJob from './NewJob'
 import Main from './Main'
+import Axios from 'axios'
+import {CLIENT_URL} from '../constants.js'
 
 // const example = [{
 //   'pk': 1,
@@ -40,7 +42,8 @@ class ModalConductor extends Component {
     this.state = {
       jobDetailsModal: false,
       targetJob: {},
-      newJobModal: false
+      newJobModal: false,
+      todos: []
     }
     this.openJobDetails = this.openJobDetails.bind(this)
     this.closeJobDetails = this.closeJobDetails.bind(this)
@@ -48,8 +51,6 @@ class ModalConductor extends Component {
     this.closeNewJob = this.closeNewJob.bind(this)
   }
   openJobDetails (target, event) {
-    console.log('event:', event)
-    console.log('target:', target)
     this.setState({
       jobDetailsModal: true,
       targetJob: target
@@ -68,13 +69,19 @@ class ModalConductor extends Component {
     this.setState({newJobModal: false})
   }
 
+  componentDidMount () {
+    Axios.get(`${CLIENT_URL}todos`)
+      .then((response) => {
+        this.setState({todos: response.data})
+      })
+  }
+
   render () {
-    console.log(this.state)
     return (
       <div>
         <Main openJobDetails={this.openJobDetails} openNewJob={this.openNewJob} />
         <button onClick={this.openJobDetails}>Job Details</button>
-        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} onRequestClose={this.closeJobDetails} job={this.state.targetJob} />}
+        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} onRequestClose={this.closeJobDetails} job={this.state.targetJob} todos={this.state.todos} />}
 
         {/* <button onClick={this.openNewJob}>Add Job</button> */}
         {this.state.newJobModal && <NewJob isOpen={this.state.newJobModal} onRequestClose={this.closeNewJob} />}
