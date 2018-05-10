@@ -39,6 +39,7 @@ class ModalConductor extends Component {
     super(props)
     this.state = {
       jobDetailsModal: false,
+      currentJobData: {},
       targetJob: {},
       newJobModal: false
     }
@@ -61,11 +62,18 @@ class ModalConductor extends Component {
   }
 
   openNewJob () {
+    if (this.state.jobDetailsModal){
+      this.setState({jobDetailsModal: false})
+    }
     this.setState({newJobModal: true})
+
   }
 
   closeNewJob () {
-    this.setState({newJobModal: false})
+    this.setState({
+      newJobModal: false,
+      targetJob: {}
+    })
   }
 
   render () {
@@ -74,10 +82,10 @@ class ModalConductor extends Component {
       <div>
         <Main openJobDetails={this.openJobDetails} openNewJob={this.openNewJob} />
         <button onClick={this.openJobDetails}>Job Details</button>
-        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} onRequestClose={this.closeJobDetails} job={this.state.targetJob} />}
+        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} openNewJob={this.openNewJob} onRequestClose={this.closeJobDetails} job={this.state.targetJob} />}
 
         {/* <button onClick={this.openNewJob}>Add Job</button> */}
-        {this.state.newJobModal && <NewJob isOpen={this.state.newJobModal} onRequestClose={this.closeNewJob} />}
+        {this.state.newJobModal && <NewJob isOpen={this.state.newJobModal} onRequestClose={this.closeNewJob} job={this.state.targetJob} />}
       </div>
 
     )
