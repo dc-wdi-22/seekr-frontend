@@ -96,36 +96,36 @@ class NewJob extends Component {
       >
         <div className='formcontainer'>
 
-          <form onSubmit={this.onSubmit}>
-            <label>Company Name:</label>
-            <input onChange={this.onChange} value={this.state.company} type='text' name='company' />
+          <form className='newjobform' onSubmit={this.onSubmit}>
+            {/* <label>Company Name:</label> */}
+            <input placeholder='Company Name' onChange={this.onChange} value={this.state.company} type='text' name='company' />
 
-            <label>Job Title:</label>
-            <input onChange={this.onChange} value={this.state.title} type='text' name='title' />
+            {/* <label>Job Title:</label> */}
+            <input placeholder='Job Title' onChange={this.onChange} value={this.state.title} type='text' name='title' />
 
-            <label>Date Posted:</label>
-            <input onChange={this.onChange} value={this.state.date_posted} type='text' name='date_posted' />
+            {/* <label>Date Posted:</label> */}
+            <input placeholder='Date Posted' onChange={this.onChange} value={this.state.date_posted} type='text' name='date_posted' />
 
-            <label>Job Description:</label>
-            <input onChange={this.onChange} value={this.state.description} type='text' name='description' />
+            {/* <label>Job Description:</label> */}
+            <input placeholder='Job Description' onChange={this.onChange} value={this.state.description} type='text' name='description' />
 
-            <label>Salary Range:</label>
-            <input onChange={this.onChange} value={this.state.salary_range_start} type='text' name='salary_range_start' />
-            <input onChange={this.onChange} value={this.state.salary_range_end} type='text' name='salary_range_end' />
+            {/* <label>Salary Range:</label> */}
+            <input placeholder='Min-salary' onChange={this.onChange} value={this.state.salary_range_start} type='text' name='salary_range_start' />
+            <input placeholder='Max-salary' onChange={this.onChange} value={this.state.salary_range_end} type='text' name='salary_range_end' />
 
-            <label>Source:</label>
-            <input onChange={this.onChange} value={this.state.source} type='text' name='source' />
+            {/* <label>Source:</label> */}
+            <input placeholder='Source' onChange={this.onChange} value={this.state.source} type='text' name='source' />
 
-            <label>Requirements:</label>
-            <input onChange={this.onChange} value={this.state.requirements} type='text' name='requirements' />
+            {/* <label>Requirements:</label> */}
+            <input placeholder='Requirements'onChange={this.onChange} value={this.state.requirements} type='text' name='requirements' />
 
-            <label>Job Status:</label>
-            <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' />
+            {/* <label>Job Status:</label> */}
+            <input placeholder='Job Status' onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' />
 
-            <label>Notes:</label>
-            <input onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
+            {/* <label>Notes:</label> */}
+            <input placeholder='Notes' onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
 
-            <input type='submit' value='submit' />
+            <input className='newjobbutton' type='submit' value='submit' />
           </form>
 
         </div>

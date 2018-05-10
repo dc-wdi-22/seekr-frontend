@@ -66,15 +66,19 @@
 
 .newjobmodal{
   position: fixed;
-  width: 50%;
+  width: 60%;
   height: 80%;
   background-color: white;
   display: block;
   padding: 30px;
+  position: center;
 }
 
 input {
-  padding: 3px 5px;
+  padding: 1em;
   margin: 1em;
+  width: 60%;
   display: block;
+  font-size: 13px;
+
 }
