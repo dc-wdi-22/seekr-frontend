@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Modal from 'react-modal'
 import '../Modal.css'
 import ToDo from './ToDos'
+import NewToDos from './NewToDos'
 
 const customStyles = {
   content: {
@@ -40,6 +41,7 @@ class JobDetails extends Component {
             <div className='todo'>
               <h2>To Do List</h2>
               <h3>{this.props.example[0].todo_list.map(item => <ToDo item={item} />)}</h3>
+              <NewToDos />
             </div>
           </div>
         </div>
