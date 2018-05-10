@@ -20,9 +20,14 @@ class Main extends Component {
       jobsOffer: [],
       jobsRejected: []
     }
+    this.updatePage = this.updatePage.bind(this)
   }
 
   componentDidMount () {
+    this.updatePage()
+  }
+
+  updatePage () {
     Axios.get(`${CLIENT_URL}jobs`)
       .then((response) => {
         let jobsApplied = response.data.filter(job => job.job_status === 'Applied')
