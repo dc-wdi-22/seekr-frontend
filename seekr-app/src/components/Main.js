@@ -88,14 +88,20 @@ class Main extends Component {
 
   render () {
     return (
-      <div>
+      <div className='body'>
         <Navbar />
-        <Sidebar companies={this.state.companies} />
-        <JobRows filter='Applied' jobs={this.state.jobsApplied} />
-        <JobRows filter='First Contact' jobs={this.state.jobsFirstContact} />
-        <JobRows filter='Interview' jobs={this.state.jobsFirstContact} />
-        <JobRows filter='Offer' jobs={this.state.jobsOffer} />
-        <JobRows filter='Rejected' jobs={this.state.jobsRejected} />
+        <div className='grid-container'>
+          <div>
+            <JobRows filter='Applied' jobs={this.state.jobsApplied} />
+            <JobRows filter='First Contact' jobs={this.state.jobsFirstContact} />
+            <JobRows filter='Interview' jobs={this.state.jobsFirstContact} />
+            <JobRows filter='Offer' jobs={this.state.jobsOffer} />
+            <JobRows filter='Rejected' jobs={this.state.jobsRejected} />
+          </div>
+          <div>
+            <Sidebar companies={this.state.companies} />
+          </div>
+        </div>
       </div>
     )
   }

@@ -1,9 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700'); */
 
-.jobDetail {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-}
 .header {
   width: 100%;
   color: white;
@@ -18,7 +14,7 @@
 
 .bold {
   text-transform: uppercase;
-  font-weight: 700;
+
 }
 
 .button {
@@ -32,4 +28,16 @@
   position: relative;
   margin: -50px 40px 0 0;
   font-size: 20px;
+}
+
+.modalgrid-container {
+    display: inline-grid;
+    grid-template-columns: 70% 30%;  
+}
+
+.todo {
+  border-left: 1px solid #3b71a5;
+  height: 100vh;
+  margin-left: 20px;
+  padding-left: 40px
 }

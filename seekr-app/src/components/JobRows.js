@@ -20,9 +20,11 @@ class JobRows extends Component {
 
   render () {
     return (
-      <div className='jobRow'>
-        <h1 className='jobFilter'>{this.props.filter}</h1>
-        {this.props.jobs.map(job => <SingleJob job={job} />)}
+      <div >
+        <h1 className='jobStatus'>{this.props.filter}</h1>
+        <div className='jobsgrid-container'>
+          {this.props.jobs.map(job => <SingleJob job={job} />)}
+        </div>
       </div>
     )
   }
