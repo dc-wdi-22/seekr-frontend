@@ -18,12 +18,12 @@ const customStyles = {
 }
 
 let blankCompany = {
-  "pk": '6',
-  "name": 'UNASSIGNED',
-  "industry": 'none',
-  "address": 'none',
-  "url": 'none',
-  "glassdoor_link": 'none',
+  'pk': '6',
+  'name': 'UNASSIGNED',
+  'industry': 'none',
+  'address': 'none',
+  'url': 'none',
+  'glassdoor_link': 'none'
 }
 
 class NewJob extends Component {
@@ -31,7 +31,7 @@ class NewJob extends Component {
     super()
 
     this.state = {
-      
+
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -92,6 +92,7 @@ class NewJob extends Component {
         onRequestClose={this.props.onRequestClose}
         style={customStyles}
         contentLabel='Example Modal'
+        className='newjobmodal'
       >
         <div className='formcontainer'>
 
@@ -114,7 +115,6 @@ class NewJob extends Component {
         Job Status:
             <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' />
         Notes:
-            <input onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
             <input type='submit' value='submit' />
           </form>
 
