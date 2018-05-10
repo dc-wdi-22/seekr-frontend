@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Modal from 'react-modal'
 import '../Modal.css'
 import ToDo from './ToDo'
+import NewToDo from './NewToDo'
 
 const customStyles = {
   content: {
@@ -16,15 +17,16 @@ const customStyles = {
 
 class JobDetails extends Component {
   render () {
-    console.log('todo pks:', this.props.job.todos)
+    console.log('job details rendering', this.props)
     let todos = []
     this.props.job.todos.forEach(pk => {
-      console.log('for each console log:', pk)
       let todoMatch = this.props.todos.filter(todo => todo.pk == pk)
       todos.push(...todoMatch)
     })
     return (
       <Modal
+        todos={this.props.todos}
+        job={this.props.job}
         isOpen={this.props.isOpen}
         onRequestClose={this.props.onRequestClose}
         // style={customStyles}
@@ -33,7 +35,7 @@ class JobDetails extends Component {
           <header className='header'>
             <h1 className='header-text'>{this.props.job.company.name}</h1>
             <h2 className='header-text'>Job Title: {this.props.job.title}</h2>
-            <button className='button'>Edit</button>
+            <button onClick={this.props.openNewJob} className='button'>Edit</button>
           </header>
           <div className='modalgrid-container'>
             <div>
@@ -48,6 +50,7 @@ class JobDetails extends Component {
             <div className='todo'>
               <h2>To Do List</h2>
               <h3>{todos.map(todo => <ToDo item={todo} />)}</h3>
+              <NewToDo job={this.props.job} updatePage={this.props.updatePage} />
             </div>
           </div>
         </div>

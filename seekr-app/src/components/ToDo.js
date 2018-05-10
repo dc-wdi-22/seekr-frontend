@@ -21,7 +21,6 @@ class ToDo extends Component {
   }
 
   componentDidUpdate () {
-    console.log('url', `${CLIENT_URL}todos/${this.props.item.pk}`)
     axios
       .put(`${CLIENT_URL}todos/${this.props.item.pk}`, {
         status: this.state.status,
