@@ -40,7 +40,7 @@ class JobDetails extends Component {
             </div>
             <div className='todo'>
               <h2>To Do List</h2>
-              <h3>{this.props.job.todo_list.map(item => <ToDo item={item} />)}</h3>
+              <h3>{this.props.job.todos.map(item => <ToDo item={item} />)}</h3>
             </div>
           </div>
         </div>
