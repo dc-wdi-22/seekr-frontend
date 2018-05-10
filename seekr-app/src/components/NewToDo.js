@@ -24,13 +24,16 @@ class NewToDo extends Component {
   submit (event) {
     console.log('submit clicked')
     event.preventDefault()
+    event.target.value = ''
     axios
       .post(`${CLIENT_URL}todos`, {
         name: this.state.name,
         status: this.state.status,
         job: this.state.job
       })
-      .then(res => console.log(res.data))
+      .then(res => {
+        this.props.updatePage()
+      })
       .catch(err => console.log(err))
   }
 

@@ -17,6 +17,7 @@ const customStyles = {
 
 class JobDetails extends Component {
   render () {
+    console.log('job details rendering', this.props)
     let todos = []
     this.props.job.todos.forEach(pk => {
       let todoMatch = this.props.todos.filter(todo => todo.pk == pk)
@@ -24,6 +25,8 @@ class JobDetails extends Component {
     })
     return (
       <Modal
+        todos={this.props.todos}
+        job={this.props.job}
         isOpen={this.props.isOpen}
         onRequestClose={this.props.onRequestClose}
         // style={customStyles}
@@ -47,7 +50,7 @@ class JobDetails extends Component {
             <div className='todo'>
               <h2>To Do List</h2>
               <h3>{todos.map(todo => <ToDo item={todo} />)}</h3>
-              <NewToDo job={this.props.job} />
+              <NewToDo job={this.props.job} updatePage={this.props.updatePage} />
             </div>
           </div>
         </div>

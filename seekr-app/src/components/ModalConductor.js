@@ -43,12 +43,15 @@ class ModalConductor extends Component {
       jobDetailsModal: false,
       targetJob: {},
       newJobModal: false,
-      todos: []
+      todos: [],
+      jobs: [],
+      companies: []
     }
     this.openJobDetails = this.openJobDetails.bind(this)
     this.closeJobDetails = this.closeJobDetails.bind(this)
     this.openNewJob = this.openNewJob.bind(this)
     this.closeNewJob = this.closeNewJob.bind(this)
+    this.updatePage = this.updatePage.bind(this)
   }
   openJobDetails (target, event) {
     this.setState({
@@ -69,21 +72,34 @@ class ModalConductor extends Component {
     this.setState({newJobModal: false})
   }
 
-  componentDidMount () {
+  updatePage () {
+    Axios.get(`${CLIENT_URL}jobs`)
+      .then((response) => {
+        this.setState({
+          jobs: response.data
+        })
+      })
+    Axios.get(`${CLIENT_URL}companies`)
+      .then((response) => {
+        this.setState({companies: response.data})
+      })
     Axios.get(`${CLIENT_URL}todos`)
       .then((response) => {
         this.setState({todos: response.data})
       })
   }
 
+  componentDidMount () {
+    this.updatePage()
+  }
+
   render () {
+    console.log('Modal Conductor rendering', this.state)
     return (
       <div>
-        <Main openJobDetails={this.openJobDetails} openNewJob={this.openNewJob} />
-        {/* <button onClick={this.openJobDetails}>Job Details</button> */}
-        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} onRequestClose={this.closeJobDetails} job={this.state.targetJob} todos={this.state.todos} />}
+        <Main openJobDetails={this.openJobDetails} openNewJob={this.openNewJob} jobs={this.state.jobs} companies={this.state.companies} />
+        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} onRequestClose={this.closeJobDetails} job={this.state.targetJob} todos={this.state.todos} updatePage={this.updatePage} />}
 
-        {/* <button onClick={this.openNewJob}>Add Job</button> */}
         {this.state.newJobModal && <NewJob isOpen={this.state.newJobModal} onRequestClose={this.closeNewJob} />}
       </div>
 
