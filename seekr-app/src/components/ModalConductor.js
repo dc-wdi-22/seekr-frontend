@@ -11,7 +11,7 @@ class ModalConductor extends Component {
     this.state = {
       jobDetailsModal: false,
       currentJobData: {},
-      targetJob: {},
+      targetJob: null,
       newJobModal: false,
       todos: [],
       jobs: [],
