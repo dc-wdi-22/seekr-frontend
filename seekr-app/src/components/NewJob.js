@@ -97,24 +97,34 @@ class NewJob extends Component {
         <div className='formcontainer'>
 
           <form onSubmit={this.onSubmit}>
-        Company Name:
+            <label>Company Name:</label>
             <input onChange={this.onChange} value={this.state.company} type='text' name='company' />
-        Job Title:
+
+            <label>Job Title:</label>
             <input onChange={this.onChange} value={this.state.title} type='text' name='title' />
-        Date Posted:
+
+            <label>Date Posted:</label>
             <input onChange={this.onChange} value={this.state.date_posted} type='text' name='date_posted' />
-        Job Description:
+
+            <label>Job Description:</label>
             <input onChange={this.onChange} value={this.state.description} type='text' name='description' />
-        Salary Range:
+
+            <label>Salary Range:</label>
             <input onChange={this.onChange} value={this.state.salary_range_start} type='text' name='salary_range_start' />
             <input onChange={this.onChange} value={this.state.salary_range_end} type='text' name='salary_range_end' />
-        Source:
+
+            <label>Source:</label>
             <input onChange={this.onChange} value={this.state.source} type='text' name='source' />
-        Requirements:
+
+            <label>Requirements:</label>
             <input onChange={this.onChange} value={this.state.requirements} type='text' name='requirements' />
-        Job Status:
+
+            <label>Job Status:</label>
             <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' />
-        Notes:
+
+            <label>Notes:</label>
+            <input onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
+
             <input type='submit' value='submit' />
           </form>
 
