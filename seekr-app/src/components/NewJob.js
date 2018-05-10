@@ -52,30 +52,32 @@ class NewJob extends Component {
     console.log('testing')
 
     let formData = this.state
-    let JOB_URL = CLIENT_URL + 'jobs'
+    console.log(formData)
+    axios.post(`${CLIENT_URL}jobs`, {
+      title: formData.title,
+      description: formData.description,
+      requirements: formData.requirements,
+      salary_range_start: parseInt(formData.salary_range_start),
+      salary_range_end: parseInt(formData.salary_range_end),
+      source: formData.source,
+      notes: formData.notes,
+      date_posted: formData.data_posted,
+      job_status: formData.job_status,
+      company: formData.company
 
-    axios.post(JOB_URL, {
-      title: "Frontend",
-      description: "do things",
-      requirements: "be great",
-      salary_range_start: 10,
-      salary_range_end: 20,
-      source: "google",
-      notes: "none",
-      date_posted: "2018-02-12",
-      job_status: 'Applied',
-      company: 6
-      // company: {
-      //      "pk": '6',
-      //      "name": 'UNASSIGNED',
-      //      "industry": 'none',
-      //      "address": 'none',
-      //      "url": 'none',
-      //      "glassdoor_link": 'none',
-      //    }
+      // "company": 1,
+      // "title": "Front",
+      // "description": "n",
+      // "requirements": "n",
+      // "salary_range_start": 50,
+      // "salary_range_end": 60,
+      // "source": "friend",
+      // "notes": "notes",
+      // "date_posted": "2000-12-01",
+      // "job_status": "Applied"
+
     })
       .then(res => {
-        console.log(res)
         console.log(res.data)
       })
       .catch(data => {
@@ -95,23 +97,24 @@ class NewJob extends Component {
 
           <form onSubmit={this.onSubmit}>
         Company Name:
-            <input onChange={this.onChange} value={this.state.companyname} type='text' name='companyname' />
+            <input onChange={this.onChange} value={this.state.company} type='text' name='company' />
         Job Title:
-            <input onChange={this.onChange} value={this.state.jobtitle} type='text' name='jobtitle' />
+            <input onChange={this.onChange} value={this.state.title} type='text' name='title' />
         Date Posted:
-            <input onChange={this.onChange} value={this.state.dateposted} type='text' name='dateposted' />
+            <input onChange={this.onChange} value={this.state.date_posted} type='text' name='date_posted' />
         Job Description:
-            <input onChange={this.onChange} value={this.state.jobdescription} type='text' name='jobdescription' />
-        Salary:
-            <input onChange={this.onChange} value={this.state.salary} type='text' name='salary' />
+            <input onChange={this.onChange} value={this.state.description} type='text' name='description' />
+        Salary Range:
+            <input onChange={this.onChange} value={this.state.salary_range_start} type='text' name='salary_range_start' />
+            <input onChange={this.onChange} value={this.state.salary_range_end} type='text' name='salary_range_end' />
         Source:
             <input onChange={this.onChange} value={this.state.source} type='text' name='source' />
-        Job Requirements:
-            <input onChange={this.onChange} value={this.state.jobrequirements} type='text' name='jobrequirements' />
+        Requirements:
+            <input onChange={this.onChange} value={this.state.requirements} type='text' name='requirements' />
+        Job Status:
+            <input onChange={this.onChange} value={this.state.job_status} type='text' name='job_status' />
         Notes:
             <input onChange={this.onChange} value={this.state.notes} type='text' name='notes' />
-        To Do List:
-            <input onChange={this.onChange} value={this.state.todolist} type='text' name='todolist' />
             <input type='submit' value='submit' />
           </form>
 
