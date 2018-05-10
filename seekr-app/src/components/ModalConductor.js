@@ -80,8 +80,8 @@ class ModalConductor extends Component {
     return (
       <div>
         <Main openJobDetails={this.openJobDetails} openNewJob={this.openNewJob} />
-        <button onClick={this.openJobDetails}>Job Details</button>
-        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} onRequestClose={this.closeJobDetails} job={this.state.targetJob} todos={this.state.todos} />}
+        {/* <button onClick={this.openJobDetails}>Job Details</button> */}
+        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} onRequestClose={this.closeJobDetails} job={this.state.targetJob} />}
 
         {/* <button onClick={this.openNewJob}>Add Job</button> */}
         {this.state.newJobModal && <NewJob isOpen={this.state.newJobModal} onRequestClose={this.closeNewJob} />}
