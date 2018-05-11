@@ -9,7 +9,7 @@ class Navbar extends Component {
   }
   render(){
     return(
-      <div class="navbar">
+      <div className="navbar">
         <img className='logo' src={seekrLogo} alt='seekr'/>
         <button className="add-button" onClick={this.props.openNewJob}>+ Add Job</button>
         <button className="add-button" onClick={this.props.openNewCompany}>+ Add Company</button>

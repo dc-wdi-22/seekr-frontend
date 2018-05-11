@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-import Axios from 'axios'
-import {CLIENT_URL} from '../constants.js'
 import JobRows from './JobRows'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
