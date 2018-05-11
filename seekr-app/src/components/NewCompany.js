@@ -125,7 +125,7 @@ class NewCompany extends Component {
 
             <input placeholder='Glassdoor Link' onChange={this.onChange} value={this.state.glassdoor_link} type='text' name='glassdoor_link' />
 
-            <input className='newjobbutton' type='submit' value='submit' />
+            <input className='newjobbutton' type='submit' value='Submit' />
             <button onClick={this.handleClick} className='newjobbutton' type='submit'>Delete</button>
           </form>
         </div>

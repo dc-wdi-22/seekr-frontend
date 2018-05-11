@@ -44,6 +44,7 @@ class NewJob extends Component {
     const target = event.target
     const value = target.value
     const name = target.name
+    // TODO: Attempting to add date picker.
     // if (name == "date_posted") {
     //   if (value.indexOf('/') > 0 ) {
     //     let date = value.split('/')
@@ -80,7 +81,7 @@ class NewJob extends Component {
       })
     }
     let dropDown = this.props.companies.map((company) => {
-      return [company.name, company.pk]
+      return {name: company.name, pk: company.pk}
     })
 
     this.setState({companyDropDown: dropDown})
@@ -143,7 +144,7 @@ class NewJob extends Component {
   }
 
   render () {
-    let companyDropDown = this.state.companyDropDown.map((company) => <option value={company[1]}> {company[0]}</option>)
+    let companyDropDown = this.state.companyDropDown.map((company) => <option value={company.pk}> {company.name}</option>)
     return (
       <Modal
         isOpen={this.props.isOpen}

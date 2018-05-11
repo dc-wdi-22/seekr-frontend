@@ -18,23 +18,6 @@ class Main extends Component {
     }
   }
 
-  // componentWillReceiveProps () {
-  // this.props
-  // console.log('main will receive props:', this.props)
-  // let jobsApplied = this.props.jobs.filter(job => job.job_status === 'Applied')
-  // let jobsFirstContact = this.props.jobs.filter(job => job.job_status === 'First Contact')
-  // let jobsInterview = this.props.jobs.filter(job => job.job_status === 'Interview')
-  // let jobsOffer = this.props.jobs.filter(job => job.job_status === 'Offer')
-  // let jobsRejected = this.props.jobs.filter(job => job.job_status === 'Rejected')
-  // this.setState({
-  //   jobsApplied: jobsApplied,
-  //   jobsFirstContact: jobsFirstContact,
-  //   jobsInterview: jobsInterview,
-  //   jobsOffer: jobsOffer,
-  //   jobsRejected: jobsRejected
-  // })
-  // }
-
   render () {
     let jobsApplied = this.props.jobs.filter(job => job.job_status === 'Applied')
     let jobsFirstContact = this.props.jobs.filter(job => job.job_status === 'First Contact')
