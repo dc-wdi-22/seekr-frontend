@@ -46,14 +46,12 @@ class NewCompany extends Component {
 
   handleClick (event) {
     event.preventDefault()
-
     axios.delete(`${CLIENT_URL}company/${this.state.companyPK}`)
       .then(res => {
         console.log(res)
         console.log(res.data)
-        this.props.updatePage()
+        window.location.reload()
       })
-    this.props.onRequestClose()
   }
 
   onSubmit (event) {
@@ -93,14 +91,17 @@ class NewCompany extends Component {
   }
 
   componentDidMount () {
-    if (this.props.job) {
+    if (Object.keys(this.props.job).length !== 0) {
       let company = (this.props.companies.filter(company => company.pk === this.props.job.company))[0]
       this.setState({
         companyPK: this.props.job.company,
         putRequest: true,
         ...company
       })
-      console.log(this.state)
+    } else {
+      this.setState({
+        putRequest: false
+      })
     }
   }
 

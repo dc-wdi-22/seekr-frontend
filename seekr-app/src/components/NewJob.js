@@ -72,21 +72,22 @@ class NewJob extends Component {
   }
 
   componentDidMount () {
-    console.log('put request variable', this.state.putRequest)
-    if (this.props.job) {
+    if (Object.keys(this.props.job).length !== 0) {
       this.setState({
-        ...this.props.job
+        ...this.props.job,
+        putRequest: true
       })
-
-      this.setState({putRequest: true})
+    } else {
+      this.setState({
+        putRequest: false
+      })
     }
     let dropDown = this.props.companies.map((company) => {
       return [company.name, company.pk]
     })
 
     this.setState({companyDropDown: dropDown}
-    , () => console.log(this.state.companyDropDown))
-
+      , () => console.log(this.state.companyDropDown))
   }
 
   handleClick (event) {
@@ -105,7 +106,7 @@ class NewJob extends Component {
     event.preventDefault()
 
     let formData = this.state
-
+    console.log('state of newjob form onsubmit:', this.state)
     if (!this.state.putRequest) {
       console.log('new job')
       axios.post(`${CLIENT_URL}jobs`, {
@@ -166,10 +167,10 @@ class NewJob extends Component {
         <div className='formcontainer'>
 
           <form className='newjobform' onSubmit={this.onSubmit}>
-              <label>Company</label>
-              <select onChange={this.onChange} value={this.state.company} name='company'>
-                {companyDropDown}
-              </select>
+            <label>Company</label>
+            <select onChange={this.onChange} value={this.state.company} name='company'>
+              {companyDropDown}
+            </select>
 
             <input placeholder='Job Title' onChange={this.onChange} value={this.state.title} type='text' name='title' />
 
