@@ -21,6 +21,7 @@ class NewCompany extends Component {
     super()
 
     this.state = {
+      putRequest: false,
       name: '',
       industry: '',
       address: '',
@@ -30,6 +31,7 @@ class NewCompany extends Component {
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   onChange (event) {
@@ -39,6 +41,18 @@ class NewCompany extends Component {
     this.setState({
       [name]: value
     })
+  }
+
+  handleClick (event) {
+    event.preventDefault()
+
+    axios.delete(`${CLIENT_URL}company/${this.props.companyPK}`)
+      .then(res => {
+        console.log(res)
+        console.log(res.data)
+        this.props.updatePage()
+      })
+    this.props.onRequestClose()
   }
 
   onSubmit (event) {
@@ -58,6 +72,17 @@ class NewCompany extends Component {
         console.log(data)
       })
     this.props.onRequestClose()
+  }
+
+  componentDidMount () {
+    console.log('put request variable', this.state.putRequest)
+    if (this.props.company) {
+      this.setState({
+        ...this.props.company
+      })
+
+      this.setState({putRequest: true})
+    }
   }
 
   render () {
@@ -83,6 +108,7 @@ class NewCompany extends Component {
             <input placeholder='Glassdoor Link' onChange={this.onChange} value={this.state.glassdoor_link} type='text' name='glassdoor_link' />
 
             <input className='newjobbutton' type='submit' value='submit' />
+            <button onClick={this.handleClick} className='newjobbutton' type='submit'>Delete</button>
           </form>
         </div>
       </Modal>

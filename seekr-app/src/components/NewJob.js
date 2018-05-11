@@ -92,12 +92,11 @@ class NewJob extends Component {
       })
     this.props.onRequestClose()
   }
-  
+
   onSubmit (event) {
     event.preventDefault()
 
     let formData = this.state
-
 
     if (!this.state.putRequest) {
       console.log('new job')
@@ -121,8 +120,8 @@ class NewJob extends Component {
           console.log(data)
         })
     } else {
-          console.log(this.state.putRequest)
-          console.log('editing rather than posting')
+      console.log(this.state.putRequest)
+      console.log('editing rather than posting')
       axios.put(`${CLIENT_URL}job/${this.props.job.pk}`, {
         title: formData.title,
         description: formData.description,
@@ -142,7 +141,7 @@ class NewJob extends Component {
           console.log(data)
         })
     }
-    this.props.onRequestClose() 
+    this.props.onRequestClose()
   }
 
   render () {

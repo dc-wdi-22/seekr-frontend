@@ -23,6 +23,7 @@ class JobDetails extends Component {
       let todoMatch = this.props.todos.filter(todo => todo.pk == pk)
       todos.push(...todoMatch)
     })
+    this.company = (this.props.companies.filter(company => company.pk === this.props.job.company))[0]
     return (
       <Modal
         todos={this.props.todos}
@@ -33,9 +34,10 @@ class JobDetails extends Component {
         contentLabel='Example Modal'>
         <div>
           <header className='header'>
-            <h1 className='header-text'>{this.props.job.company.name}</h1>
+            <h1 className='header-text'>{this.company.name}</h1>
+            <button onClick={this.props.openNewCompany} className='button'>Edit Co.</button>
             <h2 className='header-text'>Job Title: {this.props.job.title}</h2>
-            <button onClick={this.props.openNewJob} className='button'>Edit</button>
+            <button onClick={this.props.openNewJob} className='button'>Edit Job</button>
           </header>
           <div className='modalgrid-container'>
             <div>
