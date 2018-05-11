@@ -4,17 +4,6 @@ import '../Modal.css'
 import ToDo from './ToDo'
 import NewToDo from './NewToDo'
 
-// const customStyles = {
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)'
-//   }
-// }
-
 class JobDetails extends Component {
   render () {
     let todos = []
@@ -29,7 +18,6 @@ class JobDetails extends Component {
         job={this.props.job}
         isOpen={this.props.isOpen}
         onRequestClose={this.props.onRequestClose}
-        // style={customStyles}
         contentLabel='Example Modal'>
         <div>
           <header className='header'>
