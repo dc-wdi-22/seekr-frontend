@@ -36,6 +36,7 @@ class NewJob extends Component {
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   onChange (event) {
@@ -80,6 +81,18 @@ class NewJob extends Component {
     }
   }
 
+  handleClick (event) {
+    event.preventDefault()
+
+    axios.delete(`${CLIENT_URL}job/${this.props.job.pk}`)
+      .then(res => {
+        console.log(res)
+        console.log(res.data)
+        this.props.updatePage()
+      })
+    this.props.onRequestClose()
+  }
+  
   onSubmit (event) {
     event.preventDefault()
 
@@ -108,8 +121,8 @@ class NewJob extends Component {
           console.log(data)
         })
     } else {
-        console.log(this.state.putRequest)
-        console.log('editing rather than posting')
+          console.log(this.state.putRequest)
+          console.log('editing rather than posting')
       axios.put(`${CLIENT_URL}job/${this.props.job.pk}`, {
         title: formData.title,
         description: formData.description,
@@ -129,7 +142,7 @@ class NewJob extends Component {
           console.log(data)
         })
     }
-    this.props.onRequestClose()
+    this.props.onRequestClose() 
   }
 
   render () {
@@ -170,7 +183,8 @@ class NewJob extends Component {
               </select>
             </div>
 
-            <input className='newjobbutton' type='submit' value='submit' />
+            <input className='newjobbutton' type='submit' value='Submit' />
+            <button onClick={this.handleClick} className='newjobbutton' type='submit'>Delete</button>
           </form>
 
         </div>
