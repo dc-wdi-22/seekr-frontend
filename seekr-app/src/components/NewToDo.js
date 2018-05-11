@@ -22,7 +22,6 @@ class NewToDo extends Component {
   }
 
   submit (event) {
-    console.log('submit clicked')
     event.preventDefault()
     event.target.value = ''
     axios
@@ -34,7 +33,7 @@ class NewToDo extends Component {
       .then(res => {
         this.props.updatePage()
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log('error: ', err))
   }
 
   render () {

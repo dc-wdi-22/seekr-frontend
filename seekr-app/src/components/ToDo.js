@@ -27,7 +27,7 @@ class ToDo extends Component {
         name: this.state.name,
         job: this.state.job
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log('error: ', err))
   }
 
   render () {

@@ -36,7 +36,6 @@ class Main extends Component {
   // }
 
   render () {
-    console.log('main js rendering', this.props)
     let jobsApplied = this.props.jobs.filter(job => job.job_status === 'Applied')
     let jobsFirstContact = this.props.jobs.filter(job => job.job_status === 'First Contact')
     let jobsInterview = this.props.jobs.filter(job => job.job_status === 'Interview')

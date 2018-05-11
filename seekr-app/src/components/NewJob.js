@@ -44,9 +44,6 @@ class NewJob extends Component {
     const target = event.target
     const value = target.value
     const name = target.name
-
-    console.log('changing', name, value)
-
     // if (name == "date_posted") {
     //   if (value.indexOf('/') > 0 ) {
     //     let date = value.split('/')
@@ -72,21 +69,21 @@ class NewJob extends Component {
   }
 
   componentDidMount () {
-    console.log('put request variable', this.state.putRequest)
-    if (this.props.job) {
+    if (Object.keys(this.props.job).length !== 0) {
       this.setState({
-        ...this.props.job
+        ...this.props.job,
+        putRequest: true
       })
-
-      this.setState({putRequest: true})
+    } else {
+      this.setState({
+        putRequest: false
+      })
     }
     let dropDown = this.props.companies.map((company) => {
       return [company.name, company.pk]
     })
 
-    this.setState({companyDropDown: dropDown}
-    , () => console.log(this.state.companyDropDown))
-
+    this.setState({companyDropDown: dropDown})
   }
 
   handleClick (event) {
@@ -94,21 +91,16 @@ class NewJob extends Component {
 
     axios.delete(`${CLIENT_URL}job/${this.props.job.pk}`)
       .then(res => {
-        console.log(res)
-        console.log(res.data)
         this.props.updatePage()
       })
     this.props.onRequestClose()
   }
-  
+
   onSubmit (event) {
     event.preventDefault()
 
     let formData = this.state
-
-
     if (!this.state.putRequest) {
-      console.log('new job')
       axios.post(`${CLIENT_URL}jobs`, {
         title: formData.title,
         description: formData.description,
@@ -122,15 +114,12 @@ class NewJob extends Component {
         company: formData.company
       })
         .then(res => {
-          console.log(res.data)
           this.props.updatePage()
         })
         .catch(data => {
-          console.log(data)
+          console.log('error:', data)
         })
     } else {
-          console.log(this.state.putRequest)
-          console.log('editing rather than posting')
       axios.put(`${CLIENT_URL}job/${this.props.job.pk}`, {
         title: formData.title,
         description: formData.description,
@@ -147,14 +136,13 @@ class NewJob extends Component {
           this.props.updatePage()
         })
         .catch(data => {
-          console.log(data)
+          console.log('error: ', data)
         })
     }
-    this.props.onRequestClose() 
+    this.props.onRequestClose()
   }
 
   render () {
-    console.log('company drop down', this.state.companyDropDown)
     let companyDropDown = this.state.companyDropDown.map((company) => <option value={company[1]}> {company[0]}</option>)
     return (
       <Modal
@@ -167,10 +155,10 @@ class NewJob extends Component {
         <div className='formcontainer'>
 
           <form className='newjobform' onSubmit={this.onSubmit}>
-              <label>Company</label>
-              <select onChange={this.onChange} value={this.state.company} name='company'>
-                {companyDropDown}
-              </select>
+            <label>Company</label>
+            <select onChange={this.onChange} value={this.state.company} name='company'>
+              {companyDropDown}
+            </select>
 
             <input placeholder='Job Title' onChange={this.onChange} value={this.state.title} type='text' name='title' />
 

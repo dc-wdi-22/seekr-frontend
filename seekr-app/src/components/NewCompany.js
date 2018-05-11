@@ -21,6 +21,8 @@ class NewCompany extends Component {
     super()
 
     this.state = {
+      putRequest: false,
+      companyPK: null,
       name: '',
       industry: '',
       address: '',
@@ -30,6 +32,7 @@ class NewCompany extends Component {
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   onChange (event) {
@@ -41,23 +44,63 @@ class NewCompany extends Component {
     })
   }
 
+  handleClick (event) {
+    event.preventDefault()
+    axios.delete(`${CLIENT_URL}company/${this.state.companyPK}`)
+      .then(res => {
+        window.location.reload()
+      })
+  }
+
   onSubmit (event) {
     event.preventDefault()
-    axios.post(`${CLIENT_URL}companies`, {
-      name: this.state.name,
-      industry: this.state.industry,
-      address: this.state.address,
-      url: this.state.url,
-      glassdoor_link: this.state.glassdoor_link,
-      jobs: []
-    })
-      .then(res => {
-        this.props.updatePage()
+    if (!this.state.putRequest) {
+      axios.post(`${CLIENT_URL}companies`, {
+        name: this.state.name,
+        industry: this.state.industry,
+        address: this.state.address,
+        url: this.state.url,
+        glassdoor_link: this.state.glassdoor_link,
+        jobs: []
       })
-      .catch(data => {
-        console.log(data)
+        .then(res => {
+          this.props.updatePage()
+        })
+        .catch(data => {
+          console.log('error:', data)
+        })
+    } else {
+      axios.put(`${CLIENT_URL}company/${this.state.companyPK}`, {
+        name: this.state.name,
+        industry: this.state.industry,
+        address: this.state.address,
+        url: this.state.url,
+        glassdoor_link: this.state.glassdoor_link,
+        jobs: this.state.jobs
       })
+        .then(res => {
+          this.props.updatePage()
+        })
+        .catch(data => {
+          console.log('error:', data)
+        })
+    }
     this.props.onRequestClose()
+  }
+
+  componentDidMount () {
+    if (Object.keys(this.props.job).length !== 0) {
+      let company = (this.props.companies.filter(company => company.pk === this.props.job.company))[0]
+      this.setState({
+        companyPK: this.props.job.company,
+        putRequest: true,
+        ...company
+      })
+    } else {
+      this.setState({
+        putRequest: false
+      })
+    }
   }
 
   render () {
@@ -83,6 +126,7 @@ class NewCompany extends Component {
             <input placeholder='Glassdoor Link' onChange={this.onChange} value={this.state.glassdoor_link} type='text' name='glassdoor_link' />
 
             <input className='newjobbutton' type='submit' value='submit' />
+            <button onClick={this.handleClick} className='newjobbutton' type='submit'>Delete</button>
           </form>
         </div>
       </Modal>

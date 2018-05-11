@@ -12,7 +12,7 @@ class ModalConductor extends Component {
     this.state = {
       jobDetailsModal: false,
       currentJobData: {},
-      targetJob: null,
+      targetJob: {},
       newJobModal: false,
       newCompanyModal: false,
       todos: [],
@@ -65,24 +65,21 @@ class ModalConductor extends Component {
   }
 
   updatePage () {
-
     let getJobs = () => Axios.get(`${CLIENT_URL}jobs`)
     let getCompanies = () => Axios.get(`${CLIENT_URL}companies`)
     let getTodos = () => Axios.get(`${CLIENT_URL}todos`)
 
     getJobs()
-      .then( (jobsResponse) => {
+      .then((jobsResponse) => {
         getCompanies()
-          .then( (companiesResponse) =>{
+          .then((companiesResponse) => {
             getTodos()
-              .then( (todosResponse) => {
-
+              .then((todosResponse) => {
                 this.setState({
                   jobs: jobsResponse.data,
                   companies: companiesResponse.data,
                   todos: todosResponse.data
                 })
-
               })
           })
       })
@@ -93,17 +90,15 @@ class ModalConductor extends Component {
   }
 
   render () {
-    console.log('Modal Conductor rendering', this.state)
-    console.log(this.state.companies)
     return (
       <div>
         <Main openJobDetails={this.openJobDetails} openNewJob={this.openNewJob} openNewCompany={this.openNewCompany} jobs={this.state.jobs} companies={this.state.companies} />
 
-        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} openNewJob={this.openNewJob} onRequestClose={this.closeJobDetails} job={this.state.targetJob} todos={this.state.todos} updatePage={this.updatePage} />}
+        {this.state.jobDetailsModal && <JobDetails isOpen={this.state.jobDetailsModal} openNewJob={this.openNewJob} openNewCompany={this.openNewCompany} onRequestClose={this.closeJobDetails} job={this.state.targetJob} todos={this.state.todos} companies={this.state.companies} updatePage={this.updatePage} />}
 
         {this.state.newJobModal && <NewJob isOpen={this.state.newJobModal} onRequestClose={this.closeNewJob} job={this.state.targetJob} updatePage={this.updatePage} companies={this.state.companies} />}
 
-        {this.state.newCompanyModal && <NewCompany isOpen={this.state.newCompanyModal} onRequestClose={this.closeNewCompany} updatePage={this.updatePage} />}
+        {this.state.newCompanyModal && <NewCompany isOpen={this.state.newCompanyModal} onRequestClose={this.closeNewCompany} job={this.state.targetJob} updatePage={this.updatePage} companies={this.state.companies} />}
 
       </div>
 
