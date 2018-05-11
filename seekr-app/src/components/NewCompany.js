@@ -22,6 +22,7 @@ class NewCompany extends Component {
 
     this.state = {
       putRequest: false,
+      companyPK: null,
       name: '',
       industry: '',
       address: '',
@@ -46,7 +47,7 @@ class NewCompany extends Component {
   handleClick (event) {
     event.preventDefault()
 
-    axios.delete(`${CLIENT_URL}company/${this.props.companyPK}`)
+    axios.delete(`${CLIENT_URL}company/${this.state.companyPK}`)
       .then(res => {
         console.log(res)
         console.log(res.data)
@@ -57,31 +58,49 @@ class NewCompany extends Component {
 
   onSubmit (event) {
     event.preventDefault()
-    axios.post(`${CLIENT_URL}companies`, {
-      name: this.state.name,
-      industry: this.state.industry,
-      address: this.state.address,
-      url: this.state.url,
-      glassdoor_link: this.state.glassdoor_link,
-      jobs: []
-    })
-      .then(res => {
-        this.props.updatePage()
+    if (!this.state.putRequest) {
+      axios.post(`${CLIENT_URL}companies`, {
+        name: this.state.name,
+        industry: this.state.industry,
+        address: this.state.address,
+        url: this.state.url,
+        glassdoor_link: this.state.glassdoor_link,
+        jobs: []
       })
-      .catch(data => {
-        console.log(data)
+        .then(res => {
+          this.props.updatePage()
+        })
+        .catch(data => {
+          console.log(data)
+        })
+    } else {
+      axios.put(`${CLIENT_URL}company/${this.state.companyPK}`, {
+        name: this.state.name,
+        industry: this.state.industry,
+        address: this.state.address,
+        url: this.state.url,
+        glassdoor_link: this.state.glassdoor_link,
+        jobs: this.state.jobs
       })
+        .then(res => {
+          this.props.updatePage()
+        })
+        .catch(data => {
+          console.log('error:', data)
+        })
+    }
     this.props.onRequestClose()
   }
 
   componentDidMount () {
-    console.log('put request variable', this.state.putRequest)
-    if (this.props.company) {
+    if (this.props.job) {
+      let company = (this.props.companies.filter(company => company.pk === this.props.job.company))[0]
       this.setState({
-        ...this.props.company
+        companyPK: this.props.job.company,
+        putRequest: true,
+        ...company
       })
-
-      this.setState({putRequest: true})
+      console.log(this.state)
     }
   }
 

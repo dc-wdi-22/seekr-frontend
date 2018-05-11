@@ -99,7 +99,7 @@ class ModalConductor extends Component {
 
         {this.state.newJobModal && <NewJob isOpen={this.state.newJobModal} onRequestClose={this.closeNewJob} job={this.state.targetJob} updatePage={this.updatePage} />}
 
-        {this.state.newCompanyModal && <NewCompany isOpen={this.state.newCompanyModal} onRequestClose={this.closeNewCompany} company={this.state.targetJob} updatePage={this.updatePage} />}
+        {this.state.newCompanyModal && <NewCompany isOpen={this.state.newCompanyModal} onRequestClose={this.closeNewCompany} job={this.state.targetJob} updatePage={this.updatePage} companies={this.state.companies} />}
 
       </div>
 
