@@ -7,7 +7,7 @@ class JobRows extends Component {
       <div >
         <h1 className='jobStatus'>{this.props.name}</h1>
         <div className='jobsgrid-container'>
-          {this.props.jobs.map(job => <SingleJob openJobDetails={this.props.openJobDetails} companies={this.props.companies} job={job} />)}
+          {this.props.jobs.map((job,i) => <SingleJob key={i} openJobDetails={this.props.openJobDetails} companies={this.props.companies} job={job} />)}
         </div>
       </div>
     )
