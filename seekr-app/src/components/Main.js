@@ -46,7 +46,7 @@ class Main extends Component {
     let jobsRejected = this.props.jobs.filter(job => job.job_status === 'Rejected')
     return (
       <div className='body'>
-        <Navbar openNewJob={this.props.openNewJob} />
+        <Navbar openNewCompany={this.props.openNewCompany} openNewJob={this.props.openNewJob} />
         <div className='grid-container'>
           <div>
             <JobRows openJobDetails={this.props.openJobDetails} name='Applied' jobs={jobsApplied} companies={this.props.companies} />
