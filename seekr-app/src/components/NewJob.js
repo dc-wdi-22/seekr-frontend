@@ -17,15 +17,6 @@ const customStyles = {
   }
 }
 
-let blankCompany = {
-  'pk': '6',
-  'name': 'UNASSIGNED',
-  'industry': 'none',
-  'address': 'none',
-  'url': 'none',
-  'glassdoor_link': 'none'
-}
-
 class NewJob extends Component {
   constructor () {
     super()

@@ -49,19 +49,26 @@ class ModalConductor extends Component {
   }
 
   updatePage () {
-    Axios.get(`${CLIENT_URL}jobs`)
-      .then((response) => {
-        this.setState({
-          jobs: response.data
-        })
-      })
-    Axios.get(`${CLIENT_URL}companies`)
-      .then((response) => {
-        this.setState({companies: response.data})
-      })
-    Axios.get(`${CLIENT_URL}todos`)
-      .then((response) => {
-        this.setState({todos: response.data})
+
+    let getJobs = () => Axios.get(`${CLIENT_URL}jobs`)
+    let getCompanies = () => Axios.get(`${CLIENT_URL}companies`)
+    let getTodos = () => Axios.get(`${CLIENT_URL}todos`)
+
+    getJobs()
+      .then( (jobsResponse) => {
+        getCompanies()
+          .then( (companiesResponse) =>{
+            getTodos()
+              .then( (todosResponse) => {
+
+                this.setState({
+                  jobs: jobsResponse.data,
+                  companies: companiesResponse.data,
+                  todos: todosResponse.data
+                })
+
+              })
+          })
       })
   }
 
