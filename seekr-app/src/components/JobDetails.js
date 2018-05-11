@@ -4,23 +4,23 @@ import '../Modal.css'
 import ToDo from './ToDo'
 import NewToDo from './NewToDo'
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-}
+// const customStyles = {
+//   content: {
+//     top: '50%',
+//     left: '50%',
+//     right: 'auto',
+//     bottom: 'auto',
+//     marginRight: '-50%',
+//     transform: 'translate(-50%, -50%)'
+//   }
+// }
 
 class JobDetails extends Component {
   render () {
     console.log('job details rendering', this.props)
     let todos = []
     this.props.job.todos.forEach(pk => {
-      let todoMatch = this.props.todos.filter(todo => todo.pk == pk)
+      let todoMatch = this.props.todos.filter(todo => todo.pk === pk)
       todos.push(...todoMatch)
     })
     this.company = (this.props.companies.filter(company => company.pk === this.props.job.company))[0]
