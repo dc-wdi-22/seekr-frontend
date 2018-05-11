@@ -3,17 +3,13 @@ import './Navbar.css'
 import seekrLogo from '../Images/seekrLogo.svg'
 
 class Navbar extends Component {
-
-  addJob = () => {
-    console.log('adding job')
-  }
-  render(){
-    return(
-      <div className="navbar">
-        <img className='logo' src={seekrLogo} alt='seekr'/>
-        <button className="add-button" onClick={this.props.openNewJob}>+ Add Job</button>
-        <button className="add-button" onClick={this.props.openNewCompany}>+ Add Company</button>
-        <span className="user">User: WDI22</span>
+  render () {
+    return (
+      <div className='navbar'>
+        <img className='logo' src={seekrLogo} alt='seekr' />
+        <button className='add-button' onClick={this.props.openNewJob}>+ Add Job</button>
+        <button className='add-button' onClick={this.props.openNewCompany}>+ Add Company</button>
+        <span className='user'>User: WDI22</span>
       </div>
     )
   }

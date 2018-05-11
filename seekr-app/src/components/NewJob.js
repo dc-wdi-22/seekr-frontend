@@ -44,9 +44,6 @@ class NewJob extends Component {
     const target = event.target
     const value = target.value
     const name = target.name
-
-    console.log('changing', name, value)
-
     // if (name == "date_posted") {
     //   if (value.indexOf('/') > 0 ) {
     //     let date = value.split('/')
@@ -86,8 +83,7 @@ class NewJob extends Component {
       return [company.name, company.pk]
     })
 
-    this.setState({companyDropDown: dropDown}
-      , () => console.log(this.state.companyDropDown))
+    this.setState({companyDropDown: dropDown})
   }
 
   handleClick (event) {
@@ -95,8 +91,6 @@ class NewJob extends Component {
 
     axios.delete(`${CLIENT_URL}job/${this.props.job.pk}`)
       .then(res => {
-        console.log(res)
-        console.log(res.data)
         this.props.updatePage()
       })
     this.props.onRequestClose()
@@ -106,9 +100,7 @@ class NewJob extends Component {
     event.preventDefault()
 
     let formData = this.state
-    console.log('state of newjob form onsubmit:', this.state)
     if (!this.state.putRequest) {
-      console.log('new job')
       axios.post(`${CLIENT_URL}jobs`, {
         title: formData.title,
         description: formData.description,
@@ -122,15 +114,12 @@ class NewJob extends Component {
         company: formData.company
       })
         .then(res => {
-          console.log(res.data)
           this.props.updatePage()
         })
         .catch(data => {
-          console.log(data)
+          console.log('error:', data)
         })
     } else {
-      console.log(this.state.putRequest)
-      console.log('editing rather than posting')
       axios.put(`${CLIENT_URL}job/${this.props.job.pk}`, {
         title: formData.title,
         description: formData.description,
@@ -147,14 +136,13 @@ class NewJob extends Component {
           this.props.updatePage()
         })
         .catch(data => {
-          console.log(data)
+          console.log('error: ', data)
         })
     }
     this.props.onRequestClose()
   }
 
   render () {
-    console.log('company drop down', this.state.companyDropDown)
     let companyDropDown = this.state.companyDropDown.map((company) => <option value={company[1]}> {company[0]}</option>)
     return (
       <Modal

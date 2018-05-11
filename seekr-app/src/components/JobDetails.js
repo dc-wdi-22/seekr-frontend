@@ -17,7 +17,6 @@ import NewToDo from './NewToDo'
 
 class JobDetails extends Component {
   render () {
-    console.log('job details rendering', this.props)
     let todos = []
     this.props.job.todos.forEach(pk => {
       let todoMatch = this.props.todos.filter(todo => todo.pk === pk)

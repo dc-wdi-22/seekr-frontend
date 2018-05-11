@@ -90,8 +90,6 @@ class ModalConductor extends Component {
   }
 
   render () {
-    console.log('Modal Conductor rendering', this.state)
-    console.log(this.state.companies)
     return (
       <div>
         <Main openJobDetails={this.openJobDetails} openNewJob={this.openNewJob} openNewCompany={this.openNewCompany} jobs={this.state.jobs} companies={this.state.companies} />

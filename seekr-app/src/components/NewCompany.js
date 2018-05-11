@@ -48,8 +48,6 @@ class NewCompany extends Component {
     event.preventDefault()
     axios.delete(`${CLIENT_URL}company/${this.state.companyPK}`)
       .then(res => {
-        console.log(res)
-        console.log(res.data)
         window.location.reload()
       })
   }
@@ -69,7 +67,7 @@ class NewCompany extends Component {
           this.props.updatePage()
         })
         .catch(data => {
-          console.log(data)
+          console.log('error:', data)
         })
     } else {
       axios.put(`${CLIENT_URL}company/${this.state.companyPK}`, {
