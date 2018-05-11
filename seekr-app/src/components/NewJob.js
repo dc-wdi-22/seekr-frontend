@@ -32,7 +32,8 @@ class NewJob extends Component {
       source: '',
       notes: '',
       date_posted: '2018-01-01',
-      job_status: 'Applied'
+      job_status: 'Applied',
+      companyDropDown: []
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -79,6 +80,13 @@ class NewJob extends Component {
 
       this.setState({putRequest: true})
     }
+    let dropDown = this.props.companies.map((company) => {
+      return [company.name, company.pk]
+    })
+
+    this.setState({companyDropDown: dropDown}
+    , () => console.log(this.state.companyDropDown))
+
   }
 
   handleClick (event) {
@@ -146,6 +154,8 @@ class NewJob extends Component {
   }
 
   render () {
+    console.log('company drop down', this.state.companyDropDown)
+    let companyDropDown = this.state.companyDropDown.map((company) => <option value={company[1]}> {company[0]}</option>)
     return (
       <Modal
         isOpen={this.props.isOpen}
@@ -157,7 +167,10 @@ class NewJob extends Component {
         <div className='formcontainer'>
 
           <form className='newjobform' onSubmit={this.onSubmit}>
-            <input placeholder='Company Name' onChange={this.onChange} value={this.state.company} type='text' name='company' />
+              <label>Company</label>
+              <select onChange={this.onChange} value={this.state.company} name='company'>
+                {companyDropDown}
+              </select>
 
             <input placeholder='Job Title' onChange={this.onChange} value={this.state.title} type='text' name='title' />
 
